@@ -1,0 +1,856 @@
+/* Base font and cursor settings */
+body, button, input, h1, h3 {
+  font-family: 'PixelFont', monospace !important;
+  image-rendering: pixelated;
+  cursor: url('assets/images/cursors/default.png'), auto;
+}
+
+#one, #two, #three:hover {
+  cursor: url('assets/images/cursors/play_hover.png'), pointer;
+}
+
+.card {
+  cursor: url('assets/images/cursors/default.png'), auto;
+}
+
+/* Title glow animation */
+@keyframes glowTitle {
+  from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+  to   { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6)); }
+}
+
+.btn-play {
+  cursor: url('assets/images/cursors/default.png'), auto;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.btn-play:hover {
+  cursor: url('assets/images/cursors/play_hover.png'), pointer;
+}
+
+/* Scaling effect on play button image */
+.play-btn-image {
+  width: min(300px, 50vw);
+  transition: transform 0.2s;
+}
+
+.play-btn-image:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px gold);
+}
+
+/* Score panel styling */
+.score-panel {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #523c21;
+  padding: 2rem;
+  border-radius: 6px;
+  min-width: 150px;
+  min-height: fit-content;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+/* Positioning the play button */
+.btn-play {
+  position: relative;
+  z-index: 2;
+  top: 90px;
+}
+
+/* Card cursor setting */
+.card {
+  max-width: 300px;
+  flex: 0 1 auto;
+}
+
+/* Aura effect for Aegis items */
+.aegis-item {
+  filter: drop-shadow(0 0 12px #b10d22);
+}
+
+/* Hover effects for Dota-related buttons */
+.btn-dota:hover {
+  cursor: url('assets/images/cursors/play_hover.png'), pointer !important;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 12px #b10d22);
+}
+
+/* Small gutter spacing */
+.row.g-1 {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+
+.row.g-1 > .col-auto {
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+/* Animated glowing title */
+#Shiny {
+  animation: glowTitle 2s ease-in-out infinite alternate;
+  color: #da0e0e;
+  text-shadow:
+    0 0 10px rgba(218,14,14,0.8),
+    0 0 20px rgba(218,14,14,0.6),
+    2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Custom Pixel font face */
+@font-face {
+  font-family: 'PixelFont';
+  src: url('assets/images/fonts/pixel-font.ttf') format('truetype');
+}
+
+/* Game start screen title styling */
+.game-title {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 4px solid #2a2152;
+  padding: 1rem;
+}
+
+/* Start view background */
+#view-start {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: #2a2a2a url('assets/images/titles/main_title.png') center/cover no-repeat;
+  padding-bottom: 20rem;
+}
+
+/* Progress bar container styling */
+.progress {
+  border-radius: 8px;
+  height: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Progress bar visual details */
+.progress-bar {
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: width 0.8s ease-in-out;
+}
+
+/* Hero health bar color */
+.hero-progress {
+  background-color: #28a745 !important;
+}
+
+/* Gradient title effect */
+#Choice {
+  margin-top: 145px;
+  font-family: 'PixelFont', monospace;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: transparent;
+  position: relative;
+  letter-spacing: 2px;
+  background: linear-gradient(
+    90deg,
+    #bfa256 0%,
+    #f8e3b8 25%,
+    #ddddbd 50%,
+    #f8e3b8 75%,
+    #bfa256 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(242, 190, 82, 0.5));
+  animation: shine-gold 3s linear infinite;
+}
+
+/* Metallic border effect behind the gradient text */
+#Choice::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  z-index: -1;
+  text-shadow:
+    2px 2px 0 #3a3528,
+    -1px -1px 0 #6b6553;
+}
+
+/* Shine animation for the gradient */
+@keyframes shine-gold {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Button styles for attack and special buttons */
+#Red, #Yellow {
+  font-family: 'PixelFont', monospace !important;
+  background-color: #2b2b2b;
+  border: 2px solid #1a1a1a;
+  border-radius: 9px;
+  padding: 12px 24px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5), 0 0 4px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+  cursor: url('assets/images/cursors/pointer.png'), pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Attack button color */
+#Red {
+  background-color: #1d2731;
+  border-color: #0d1326;
+  color: #fa746f;
+}
+
+#Red:hover {
+  background-color: #223249;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6), 0 0 10px rgba(111, 186, 250, 0.8);
+  transform: scale(1.05);
+}
+
+#Red:active {
+  animation: shake 0.2s ease-in-out;
+  transform-origin: center center;
+  transform: scale(0.98);
+}
+
+/* Special ability button color and hover */
+#Yellow {
+  background-color: #312d21;
+  border-color: #1a1509;
+  color: #d9b277;
+  margin-left: 10px;
+  cursor: url('assets/images/cursors/special_abbility.png'), pointer !important;
+}
+
+#Yellow:hover {
+  background-color: #3a341f;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6), 0 0 10px rgba(163, 217, 119, 0.8);
+  transform: scale(1.05);
+}
+
+#Yellow:active {
+  animation: shake 0.2s ease-in-out;
+  transform-origin: center center;
+  transform: scale(0.98);
+}
+
+#Yellow:disabled {
+  background-color: #1f1b18;
+  color: #555;
+  border-color: #2e2a27;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Strikethrough and muted text for used special ability */
+#Yellow s {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+#Yellow .text-muted {
+  color: #6c757d !important;
+  margin-left: 5px;
+}
+
+/* Button press shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-2px); }
+  40%, 80% { transform: translateX(2px); }
+}
+
+/* Full-screen background for character selection */
+#view-characters {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('assets/images/backgrounds/view-character-bg.png') center/cover no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Container for character cards */
+#character-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Grid layout for character cards */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  gap: 60px;
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 20px 0 40px;
+  box-sizing: border-box;
+}
+
+/* Title styling within the character grid */
+.character-grid h1 {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-bottom: 20px;
+  font-family: 'PixelFont', monospace;
+  font-size: 3rem;
+  color: transparent;
+  background: linear-gradient(to bottom, #f8e3b8 0%, #ddddbd 30%, #8a7855 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(242, 190, 82, 0.5));
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+/* Character card container settings */
+.character-card {
+  align-self: start;
+  max-width: 300px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 4px solid #523c21;
+  box-shadow: 0 0 12px #9b6d28;
+  display: flex;
+  flex-direction: column;
+  cursor: url('assets/images/cursors/default.png'), pointer;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  overflow: hidden;
+}
+
+/* Hover effect for character cards */
+.character-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #ff9d00;
+  cursor: url('assets/images/cursors/play_hover.png'), pointer;
+}
+
+/* Image inside character card */
+.character-card .card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* Text stats inside character card */
+.character-card .card-stats {
+  padding: 12px;
+  font-family: 'PixelFont', monospace;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.4;
+}
+
+/* Paragraph spacing inside stats */
+.character-card .card-stats p {
+  margin: 6px 0;
+  color: gold;
+}
+
+/* Layout for battle container */
+.battle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.hero-stats, .enemy-stats {
+  width: 45%;
+}
+
+/* Battle logs container settings */
+#battle-logs {
+  position: relative;
+  height: 149px !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Background frame for logs */
+.log-bg {
+  object-fit: cover !important;
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Individual log entry styling */
+.log-entry {
+  position: relative !important;
+  width: 100%;
+  color: white !important;
+  background: transparent !important;
+  border: none !important;
+  animation: slideIn 0.5s, fadeOut 5s forwards !important;
+  margin: 10px 0;
+  text-shadow:
+    2px 2px 2px black,
+    -2px -2px 2px black;
+  z-index: 2;
+  font-size: 1.5rem !important;
+  text-align: center !important;
+}
+
+/* Fade out animation for log entries */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Active log entry class */
+.log-entry.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Style for special ability icon in logs */
+.log-entry img[src*="special.png"] {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 2px #ffd700);
+}
+
+/* Style for warning icon in logs */
+.log-entry img[src*="warning.png"] {
+  width: 24px;
+  height: 24px;
+  filter: invert(25%) sepia(100%) saturate(3000%);
+}
+
+/* Log icon size and spacing */
+.log-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+/* Final messages stay visible */
+.final-message {
+  animation: none !important;
+  opacity: 1 !important;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Blur effect for battle UI when needed */
+.blurred .battle-container,
+.blurred button {
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* Hide map container when the hidden attribute is set */
+#map-container[hidden] {
+  display: none !important;
+}
+
+/* Map container full screen styling */
+#map-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  cursor: url('assets/images/cursors/default.png'), auto;
+  background-image: url('assets/images/backgrounds/map-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Border styling around the map image */
+#map-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 900px;
+  border: 8px solid #523c21;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: #1b1311;
+  padding: 4px;
+}
+
+/* Level map image responsive sizing */
+#map-border img#lvl-map-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Fullscreen win screen container */
+#view-win {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 50;
+}
+
+/* Remove container constraints if Bootstrap container is present */
+#view-win.container {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Win image styling with border and shadow */
+#win-image {
+  max-width: 80vw;
+  width: 750px;
+  max-height: auto;
+  height: 750px;
+  border: 5px solid #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
+  object-fit: contain;
+}
+
+/* Title fade-in effect for win screen */
+#view-win h1 {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+#view-win.show h1 {
+  opacity: 1;
+}
+
+/* Ensure message and continue button appear above the win image */
+#win-message,
+#btn-continue {
+  position: relative;
+  z-index: 60;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Win screen title size and margin */
+#view-win h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Critical damage text styling */
+.crit-text {
+  color: #ff0000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+  font-weight: bold;
+  margin-left: 6px;
+  border-color: #080606;
+  animation: crit-pulse 0.5s ease-in-out;
+}
+
+/* Pulse animation for critical hits */
+@keyframes crit-pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Icon size for critical hits */
+.crit-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+/* Small spacing utility classes */
+.space-right { margin-right: 3px; }
+.space-left  { margin-left: 3px; }
+
+/* Remove Bootstrap container constraints from Aegis and Game Over screens */
+#view-aegis.container,
+#view-gameover.container {
+  max-width: none !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fullscreen background and centering for Aegis view */
+#view-aegis {
+  background-image: url('assets/images/backgrounds/bg-aegis.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Fullscreen background and centering for Game Over view */
+#view-gameover {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Specific backgrounds for victory and defeat states */
+#view-gameover.victory-bg {
+  background-image: url('assets/images/backgrounds/bg-victory.jpg');
+}
+#view-gameover.defeat-bg {
+  background-image: url('assets/images/backgrounds/bg-defeat.png');
+}
+
+/* Common panel styling for Aegis and Game Over screens */
+#view-aegis .dota-panel,
+#view-gameover .dota-panel {
+  max-width: 400px;
+  width: 90%;
+  margin: 0 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.5rem;
+}
+
+/* Glow effect for Aegis and victory panels */
+#view-aegis .dota-panel,
+#view-gameover.victory-bg .dota-panel {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+/* Cursor change on Aegis submit and score submit hover */
+#btn-aegis-submit,
+#btn-submit-score:hover {
+  cursor: url('assets/images/cursors/play_hover.png'), pointer;
+}
+
+/* Panel backgrounds for Aegis and Game Over */
+.dota-panel {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #523c21;
+  padding: 2rem;
+  border-radius: 6px;
+  min-width: 150px;
+  min-height: fit-content;
+}
+
+/* Red glow for defeat panel */
+#view-gameover.defeat-bg .dota-panel {
+  box-shadow: 0 0 20px rgba(200, 0, 0, 0.8);
+}
+
+/* Big background title effect */
+.bg-title {
+  display: inline-block;
+  position: relative;
+  margin: 20vh auto 0;
+  font-size: 6rem;
+  font-family: 'PixelFont', monospace !important;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  transform: scaleX(1.2);
+  background: linear-gradient(
+    90deg,
+    #ffd700 0%,
+    #fff1a8 50%,
+    #ffd700 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px darkgoldenrod;
+  text-stroke: 1.5px darkgoldenrod;
+  animation:
+    shineGradient 4s ease-in-out infinite,
+    glow 2s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Slide gradient left to right */
+@keyframes shineGradient {
+  0%   { background-position: 0%   0%; }
+  100% { background-position: 100% 0%; }
+}
+
+/* Glow effect animation */
+@keyframes glow {
+  0%   { filter: drop-shadow(0 0 5px gold); }
+  100% { filter: drop-shadow(0 0 20px lightgoldenrodyellow); }
+}
+
+/* Battle view background settings */
+#view-battle {
+  background: url('assets/images/backgrounds/bg-battle.png') center center/cover no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+}
+
+/* Flash animation for damage taken */
+@keyframes damageFlash {
+  0% { filter: brightness(2); }
+  100% { filter: brightness(1); }
+}
+
+/* Apply flash effect to progress bars */
+.damage-flash {
+  animation: damageFlash 0.3s ease-out;
+}
+
+/* Hide blinking caret in map container */
+#map-container {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines on images and area tags in map */
+#map-container img,
+#map-container area,
+#map-container img:focus,
+#map-container area:focus {
+  outline: none;
+}
+
+/* Ensure map image cursor remains default */
+#lvl-map-img {
+  cursor: default;
+}
+
+/* Prevent text selection and caret in map area */
+#map-container,
+#map-border,
+#lvl-map-img {
+  user-select: none;
+}
+
+/* Hide blinking caret inside cards */
+.card,
+.card * {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines for card elements */
+.card:focus,
+.card *:focus {
+  outline: none;
+}
+
+/* Hide caret in character selection view */
+#view-characters,
+#view-characters * {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines for inputs in character selection */
+#view-characters *:focus {
+  outline: none;
+}
+
+/* Allow caret and focus outline only on text inputs */
+#view-characters input[type="text"],
+#view-characters input[type="text"]:focus {
+  caret-color: auto;
+  outline: auto;
+}
+
+/* Hide caret in battle view */
+#view-battle,
+#view-battle * {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines in battle view */
+#view-battle *:focus {
+  outline: none;
+}
+
+/* Hide caret in battle logs */
+#battle-logs,
+#battle-logs * {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines in battle logs */
+#battle-logs *:focus {
+  outline: none;
+}
+
+/* Hide caret in battle container */
+.battle-container,
+.battle-container * {
+  caret-color: transparent;
+}
+
+/* Remove focus outlines for interactive elements in battle */
+.battle-container *:focus {
+  outline: none;
+}
+
+/* Allow focus outline on specific inputs */
+#best-name:focus {
+  outline: auto;
+}
+
+#player-name:focus {
+  outline: auto;
+}
+
+/* Hide text cursor and focus outline in the start view */
+#view-start,
+#view-start * {
+  caret-color: transparent;  /* No blinking cursor anywhere inside view-start */
+}
+
+#view-start *:focus {
+  outline: none;             /* No focus outline when elements inside view-start are clicked */
+}
